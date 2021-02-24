@@ -27,7 +27,7 @@ function dl_custom_release() {
 }
 
 function help_info() {
-	echo -e "usage:\n ./dl-release.sh latest v2fly v2ray-core\n ./dl-release.sh custom v2fly v2ray-core v1.6.0-rc5"
+	echo -e "usage:\n ./download-github-release.sh latest v2fly v2ray-core\n ./download-github-release.sh custom v2fly v2ray-core v1.6.0-rc5"
 }
 
 if [ "$1" = "latest" ];then
