@@ -16,7 +16,7 @@ function dl_lastest_release() {
 
 function dl_custom_release() {
     DOWNLOAD_URL=$(curl -fsSL https://api.github.com/repos/$1/$2/releases/tags/$3 | grep browser_download_url | sed -E 's/.*"(.*)".*/\1/')
-    DOWNLOAD_FOLDER="$1-$2-$VERSION"
+    DOWNLOAD_FOLDER="$1-$2-$4"
     if [ -d "$DOWNLOAD_FOLDER" ];then
     	echo "[Notice]Found folder $DOWNLOAD_FOLDER, Do nothing."
     else
