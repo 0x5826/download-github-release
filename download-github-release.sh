@@ -22,7 +22,7 @@ function dl_custom_release() {
     else
     	echo "[Notice]Creating folder $DOWNLOAD_FOLDER"
     	mkdir $DOWNLOAD_FOLDER && cd $DOWNLOAD_FOLDER
-    	echo "$DOWNLOAD_URL" | grep $VERSION | xargs wget -q --show-progress
+    	wget -q --show-progress $DOWNLOAD_URL
     fi
 }
 
