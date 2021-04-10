@@ -62,7 +62,7 @@ function dl_all_release() {
 }
 
 function help_info() {
-    echo -e "usage:\n ./download-github-release.sh latest v2fly v2ray-core\n ./download-github-release.sh custom v2fly v2ray-core v1.6.0-rc5"
+    echo -e "usage:\n ./download-github-release.sh latest v2fly v2ray-core\n ./download-github-release.sh custom v2fly v2ray-core v1.6.0-rc5 \n ./download-github-release.sh all v2fly v2ray-core"
 }
 
 if [ "$1" = "latest" ];then
