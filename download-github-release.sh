@@ -60,6 +60,7 @@ function dl_all_release() {
                 curl -O -fSL $proxy -# $DOWNLOAD_FILE
             done
             cd ..
+        fi
     done
     fi
 }
