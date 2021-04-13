@@ -42,14 +42,17 @@ function dl_all_release() {
     VERSIONS=$(curl -fsSL $proxy https://api.github.com/repos/$1/$2/releases | grep tag_name | sed -E 's/.*"(.*)".*/\1/')
     DOWNLOAD_FOLDER="releases-$1-$2"
     if [ -d "$DOWNLOAD_FOLDER" ];then
-        echo -e "\033[33m[Notice]\033[0mFound folder $DOWNLOAD_FOLDER."
+        echo -e "\033[33m[Notice]\033[0mFounding folder $DOWNLOAD_FOLDER."
     else
         echo -e "\033[33m[Notice]\033[0mCreating folder $DOWNLOAD_FOLDER."
-        mkdir $DOWNLOAD_FOLDER && cd $DOWNLOAD_FOLDER
-        for VERSION in $VERSIONS
-        do
+        mkdir $DOWNLOAD_FOLDER
+    for VERSION in $VERSIONS
+    do
+        if [ -d "$VERSION" ];then
+            echo -e "\033[33m[Notice]\033[0mFounding folder $VERSION, noting to do."
+        else
             echo -e "\033[33m[Notice]\033[0mCreating folder $DOWNLOAD_FOLDER/$VERSION"
-            mkdir $VERSION && cd $VERSION
+            cd $DOWNLOAD_FOLDER && mkdir $VERSION && cd $VERSION
             DOWNLOAD_URL=$(curl -fsSL $proxy https://api.github.com/repos/$1/$2/releases/tags/$VERSION | grep browser_download_url | sed -E 's/.*"(.*)".*/\1/')
             for DOWNLOAD_FILE in $DOWNLOAD_URL
             do
@@ -57,7 +60,7 @@ function dl_all_release() {
                 curl -O -fSL $proxy -# $DOWNLOAD_FILE
             done
             cd ..
-        done
+    done
     fi
 }
 
