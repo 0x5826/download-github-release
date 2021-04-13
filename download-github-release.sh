@@ -51,14 +51,6 @@ function dl_all_release() {
     do
         if [ -d "$VERSION" ];then
             echo -e "\033[33m[Notice]\033[0mFounding folder $VERSION, noting to do."
-            cd $VERSION
-            DOWNLOAD_URL=$(curl -fsSL $proxy https://api.github.com/repos/$1/$2/releases/tags/$VERSION | grep browser_download_url | sed -E 's/.*"(.*)".*/\1/')
-            for DOWNLOAD_FILE in $DOWNLOAD_URL
-            do
-                echo -e "\033[33m[Notice]\033[0mDownloading \033[32m$DOWNLOAD_FILE\033[0m"
-                curl -O -fSL $proxy -# $DOWNLOAD_FILE
-            done
-            cd ..
         else
             echo -e "\033[33m[Notice]\033[0mCreating folder $VERSION"
             mkdir -p $VERSION && cd $VERSION
